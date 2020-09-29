@@ -1,7 +1,8 @@
 //Required Packages
 var rls = require("readline-sync");
-var clear = require("clear")
-var game = require("./game.js")
+var clear = require("clear");
+var game = require("./game.js");
+var save = require("./savehandler.js");
 main();
 
 function main() {
@@ -12,7 +13,7 @@ function main() {
     if(resp0.toLowerCase() == "new game") {
         game.OutsideTrigger();
     }else if(resp0.toLowerCase() == "continue") {
-        var saveGameNum = rls.question("Which save? (1-5) ");
+        save.save();
         
     }else if(resp0.toLowerCase() == "settings") {
 

@@ -5,6 +5,7 @@ var charHealth = 0;
 var charMood = 0;
 var charHunger = 0;
 var charThirst = 0;
+var turnNum = 0;
 var gameRunning = false;
 function OutsideTrigger() {
     gameRunning = true;
@@ -19,6 +20,8 @@ function setBaseStats() {
     charMood = 2;
 }
 function gameLoop() {
+    clear();
+    turnNum++;
     randomEvent();
     printCurrentMood();
     printStats();
@@ -55,6 +58,13 @@ function getUserTask() {
         charThirst--;
     }else if(resp2.toLowerCase() == "pet") {
         charMood = Math.floor(Math.random() * 4);
+        var onot = Math.floor(Math.random() * 2);
+        switch(onot) {
+            case 1:
+                charHealth++
+                break;
+            
+        }
     }else if(resp2.toLowerCase() == "end") {
         gameRunning = false;
     }
@@ -63,18 +73,18 @@ function randomEvent() {
     var EventCode = Math.floor(Math.random() * 10);
     switch(EventCode) {
         case 0:
-            charThirst++;
+            charThirst--;
             break;
         case 1:
-            charHunger++;
+            charHunger--;
             break;
         case 3:
             charThirst++;
             charHunger++;
             break;
         case 4:
-            charThirst--;
-            charHunger--;
+            charThirst+=2;
+            charHunger+=2;
             break;
         case 5:
             charThirst = 0;
@@ -83,15 +93,18 @@ function randomEvent() {
             charHunger = 0;
             break;
         case 7:
-            // 7 - 9 cases are placeholders
+            charHealth--;
             break;
         case 8:
+            charHealth++;
             break;
         case 9:
+            charHealth--;
             break;                                
     }
 }
 function printStats() {
+    console.log("                       Turn: " + turnNum);
     console.log("---         Stats           ---")
     console.log("- Hunger: " + charHunger + " - ");
     console.log("- Thirst: " + charThirst + " - ");
