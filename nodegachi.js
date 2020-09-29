@@ -10,7 +10,7 @@ function main() {
     var resp0 = rls.question("New Game, Continue, or Settings? ")
     
     if(resp0.toLowerCase() == "new game") {
-        
+        game.OutsideTrigger();
     }else if(resp0.toLowerCase() == "continue") {
         var saveGameNum = rls.question("Which save? (1-5) ");
         

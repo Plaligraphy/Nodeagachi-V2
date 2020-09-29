@@ -5,16 +5,27 @@ var charHealth = 0;
 var charMood = 0;
 var charHunger = 0;
 var charThirst = 0;
-
+var gameRunning = false;
+function OutsideTrigger() {
+    gameRunning = true;
+    setBaseStats();
+    while(gameRunning) {
+        gameLoop();
+    }
+}
 function setBaseStats() {
     //Sets base stats/points for beginning the game
     charHealth = 100;
     charMood = 2;
 }
 function gameLoop() {
+    randomEvent();
     printCurrentMood();
     printStats();
     getUserTask();
+    while(gameRunning) {
+        gameLoop();
+    }
 }
 function printCurrentMood() {
     switch(charMood) {
@@ -50,18 +61,27 @@ function randomEvent() {
     var EventCode = Math.floor(Math.random() * 10);
     switch(EventCode) {
         case 0:
+            thirst++;
             break;
         case 1:
+            hunger++;
             break;
         case 3:
+            thirst++;
+            hunger++;
             break;
         case 4:
+            thirst--;
+            hunger--;
             break;
         case 5:
+            thirst = 0;
             break;
         case 6:
+            hunger = 0;
             break;
         case 7:
+            // 7 - 9 cases are placeholders
             break;
         case 8:
             break;
