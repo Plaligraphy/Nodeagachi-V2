@@ -55,30 +55,32 @@ function getUserTask() {
         charThirst--;
     }else if(resp2.toLowerCase() == "pet") {
         charMood = Math.floor(Math.random() * 4);
+    }else if(resp2.toLowerCase() == "end") {
+        gameRunning = false;
     }
 }
 function randomEvent() {
     var EventCode = Math.floor(Math.random() * 10);
     switch(EventCode) {
         case 0:
-            thirst++;
+            charThirst++;
             break;
         case 1:
-            hunger++;
+            charHunger++;
             break;
         case 3:
-            thirst++;
-            hunger++;
+            charThirst++;
+            charHunger++;
             break;
         case 4:
-            thirst--;
-            hunger--;
+            charThirst--;
+            charHunger--;
             break;
         case 5:
-            thirst = 0;
+            charThirst = 0;
             break;
         case 6:
-            hunger = 0;
+            charHunger = 0;
             break;
         case 7:
             // 7 - 9 cases are placeholders
@@ -106,3 +108,4 @@ function getSaveGame() {
 function setSaveGame() {
 
 }
+module.exports = { OutsideTrigger }

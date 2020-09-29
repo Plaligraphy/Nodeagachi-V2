@@ -1,7 +1,7 @@
 //Required Packages
 var rls = require("readline-sync");
 var clear = require("clear")
-var game = require("./game")
+var game = require("./game.js")
 main();
 
 function main() {
