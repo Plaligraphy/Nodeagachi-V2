@@ -1,2 +1,3 @@
 # Nodeagachi-V2
-Revamped version of my first real Node.js game. 
+Revamped version of my first real Node.js game
+
