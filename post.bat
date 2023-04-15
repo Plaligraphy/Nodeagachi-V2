@@ -1,7 +1,7 @@
 @echo off
-echo "Posting file..."
+echo Posting file...
 git add *
-set /P id=Enter Commit Comments:
+set /P id=Enter Commit Comments: 
 git commit -m %id% 
 git push
-echo "Commit Completed! Exitting..."
+echo Commit Completed! Exitting...
