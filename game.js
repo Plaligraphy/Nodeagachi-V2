@@ -20,6 +20,12 @@ function setBaseStats() {
     charMood = 2;
 }
 function gameLoop() {
+    if(turnNum > 100) {
+        console.log("Congrats! You made it 100 rounds!")
+        console.log("System exitting....")
+        gameRunning = false;
+        process.exit(0);
+    }
     clear();
     turnNum++;
     randomEvent();
@@ -51,12 +57,12 @@ function printCurrentMood() {
     }
 }
 function getUserTask() {
-    var resp2 = rls.question("Feed, Water, or Pet? ")
-    if(resp2.toLowerCase() == "feed") {
+    var resp2 = rls.question("Feed, Water, or Pet? ").toLowerCase();
+    if(resp2 == "feed") {
         charHunger--;
-    }else if(resp2.toLowerCase() == "water") {
+    }else if(resp2 == "water") {
         charThirst--;
-    }else if(resp2.toLowerCase() == "pet") {
+    }else if(resp2 == "pet") {
         charMood = Math.floor(Math.random() * 4);
         var onot = Math.floor(Math.random() * 2);
         switch(onot) {
@@ -65,12 +71,18 @@ function getUserTask() {
                 break;
             
         }
-    }else if(resp2.toLowerCase() == "end") {
+    }else if(resp2 == "end" || resp2 == "exit") {
         gameRunning = false;
     }
 }
 function randomEvent() {
     var EventCode = Math.floor(Math.random() * 10);
+    if(charThirst < 0) {
+        charThirst = 0;
+    }
+    if(charHunger < 0) {
+        charHunger = 0;
+    }
     switch(EventCode) {
         case 0:
             charThirst--;
