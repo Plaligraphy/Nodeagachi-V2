@@ -1,3 +1,5 @@
+@echo off
 git add *
-git commit -m "Automated Push!"
+set /P id=Enter Commit Comments:
+git commit -m %id% 
 git push
